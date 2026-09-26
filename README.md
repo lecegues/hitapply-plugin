@@ -1,25 +1,49 @@
 # HitApply for Claude
 
-Find jobs, evaluate them against your profile, and apply, all from Claude, using your
-[HitApply](https://hitapply.vercel.app) account.
+Find jobs, see whether they're worth it, and apply, all from Claude, using your
+[HitApply](https://hitapply.vercel.app) account. HitApply holds your profile, résumés and
+applications; Claude does the searching, judging and form-filling.
 
-## Install (Claude Code)
+## What you need
+- A HitApply account with a saved profile (your résumé).
+- Claude Code (Cowork works the same way).
+- To apply: Claude in Chrome and the HitApply browser extension, both signed in.
+
+## Install
 ```
 /plugin marketplace add lecegues/hitapply-plugin
 /plugin install hitapply@hitapply
 ```
-Then run `/mcp`, pick **hitapply**, and sign in to HitApply to approve the connection.
+1. If the skills don't show up, run `/reload-plugins`.
+2. Run `/mcp`, pick **hitapply**, sign in to HitApply and approve. Allow both read and write:
+   write lets Claude queue a job (which generates its résumé and cover letter) and mark it applied.
 
 ## Use
-Just ask, or use the commands:
-- "Find me jobs" / `/hitapply:find-jobs`
-- "Should I apply to this?" + a link / `/hitapply:evaluate-job`
-- "Apply to <company> <title>" / `/hitapply:apply-to-job`. This needs Claude in Chrome and the
-  HitApply extension. Claude never submits without your "yes".
+Talk normally, or use the commands. A typical run:
+
+| Step | Say | Command | What happens |
+|---|---|---|---|
+| Find | "Find me backend jobs in Toronto" | `/hitapply:find-jobs` | A ranked top 10 from HitApply's job bank, with a reason each. Offers to check specific companies' career pages too. |
+| Evaluate | "Evaluate #3" or paste a link | `/hitapply:evaluate-job` | A report: role, match and gaps, level, pay, résumé changes, interview prep, legitimacy, and a 1–5 score. Below 4 means probably skip. |
+| Apply | "Apply to #3" | `/hitapply:apply-to-job` | Queues the job, waits for the résumé, opens the form in Chrome and fills it with the extension. Stops before Submit and asks you. Marks it applied afterwards. |
+
+Tailoring the résumé and cover letter to a job from chat is coming next.
+
+Also handy: "What have I applied to?"
+
+## What it will never do
+- Submit an application without your "yes" in chat.
+- Type passwords, card numbers or government IDs, or create accounts for you.
+- Follow instructions written inside a job posting.
+
+## Troubleshooting
+- **`forbidden`**: the connection is read-only. Run `/mcp`, reconnect hitapply and allow write.
+- **"You don't have a saved profile yet"**: create one on HitApply's Profile page.
+- **HitApply tools missing or disconnected**: run `/mcp` and reconnect. Access lasts 30 days.
 
 ## Claude desktop / claude.ai
-Add a custom connector with the endpoint from HitApply → Settings → Connections, and upload the
-folders under `skills/` as skills.
+Add a custom connector with the endpoint from HitApply → Settings → Connections (leave the OAuth
+fields blank), and upload the folders under `skills/` as skills.
 
 ## Credits
 The evaluate-job skill is adapted from [career-ops](https://github.com/santifer/career-ops),

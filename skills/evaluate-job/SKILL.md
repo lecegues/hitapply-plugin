@@ -24,7 +24,9 @@ Adapted from the evaluation mode of career-ops by Santiago Fernández de Valderr
 Deliver every block, concise, in chat. Nothing is saved.
 
 **A) Role summary**: a table of domain, function, seniority, remote (full/hybrid/onsite), team size
-if mentioned, and a one-sentence TL;DR.
+if mentioned, **work authorization**, and a one-sentence TL;DR. For work authorization: if the job is
+in a different country from the candidate (profile header or most recent role), flag it as a possible
+visa or sponsorship blocker and list it as a hard gap in B, unless the user said they're authorized.
 
 **B) Match with the profile**: a table mapping each job requirement to the specific profile
 experience that covers it. Then **gaps**: for each, say whether it's a hard blocker or a

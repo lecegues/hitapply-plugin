@@ -12,11 +12,12 @@ description: Find jobs for the user with HitApply. Use when the user asks to fin
   (Profile page), then ask again." and stop.
 - **Query:** the profile has no target role, so use the role the user asked for, or infer one from
   the header and the most recent job titles (e.g. "backend engineer").
-- **Locations:** the profile has none either. If the user didn't name any, ask once: "Where, or
-  remote?"
+- **Locations:** if the user didn't name any, use the location in the profile header, or failing
+  that the most recent role's location. Ask "Where, or remote?" only if there's neither.
 - Call `search_jobs(query, locations, limit=30)`. Results come newest first, unranked.
 - **Rank** them yourself against the profile: title and seniority fit first, then location and
-  remote. Show the top 10, numbered, each as company — title, location, and a one-line reason.
+  remote. Drop jobs in another country unless the user asked for it (they likely need work
+  authorization there). Show the top 10, numbered, each as company — title, location, and a one-line reason.
   Say it's ranked on the title and location; the full match comes from evaluating a job.
 - If nothing fits, loosen the query once (fewer terms, no location) before saying so.
 
