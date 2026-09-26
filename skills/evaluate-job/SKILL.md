@@ -55,7 +55,7 @@ one. **4.0 or above: worth applying. Below 4.0: probably skip**, unless the user
 profile doesn't show.
 
 ## Next
-Ask: "Want me to apply?" On yes, use the apply-to-job skill. Don't queue or generate anything from
+Ask: "Want me to tailor your résumé for it, or apply?" Use the tailor or apply-to-job skill. Don't queue or generate anything from
 this skill.
 
 ## Never
