@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "hitapply": {
+      "type": "http",
+      "url": "https://hitapply-worker.onrender.com/mcp"
+    }
+  }
+}

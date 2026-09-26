@@ -1,34 +1,6 @@
-# HitApply for Claude
-
-Find jobs, evaluate them against your profile, and apply, all from Claude, using your
-[HitApply](https://hitapply.vercel.app) account.
-
-## Install (Claude Code)
-```
-/plugin marketplace add lecegues/hitapply-plugin
-/plugin install hitapply@hitapply
-```
-Then run `/mcp`, pick **hitapply**, and sign in to HitApply to approve the connection.
-
-## Use
-Just ask, or use the commands:
-- "Find me jobs" / `/hitapply:find-jobs`
-- "Should I apply to this?" + a link / `/hitapply:evaluate-job`
-- "Apply to <company> <title>" / `/hitapply:apply-to-job`. This needs Claude in Chrome and the
-  HitApply extension. Claude never submits without your "yes".
-
-## Claude desktop / claude.ai
-Add a custom connector with the endpoint from HitApply → Settings → Connections, and upload the
-folders under `skills/` as skills.
-
-## Credits
-The evaluate-job skill is adapted from [career-ops](https://github.com/santifer/career-ops),
-used under its MIT License:
-
-```
 MIT License
 
-Copyright (c) 2026 Santiago Fernández de Valderrama
+Copyright (c) 2026 lecegues
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -47,4 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-```

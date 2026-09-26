@@ -1,0 +1,9 @@
+{
+  "name": "hitapply",
+  "version": "0.1.0",
+  "description": "Find jobs, evaluate them against your profile, and apply through HitApply.",
+  "author": {
+    "name": "lecegues",
+    "url": "https://github.com/lecegues"
+  }
+}

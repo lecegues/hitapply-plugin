@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "hitapply",
+  "description": "HitApply for Claude: find, evaluate and apply to jobs with your HitApply account.",
+  "owner": {
+    "name": "lecegues",
+    "url": "https://github.com/lecegues"
+  },
+  "plugins": [
+    {
+      "name": "hitapply",
+      "description": "Find jobs, evaluate them against your profile, and apply through HitApply.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
