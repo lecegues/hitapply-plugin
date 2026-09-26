@@ -2,7 +2,10 @@
   "mcpServers": {
     "hitapply": {
       "type": "http",
-      "url": "https://hitapply-worker.onrender.com/mcp"
+      "url": "https://hitapply-worker.onrender.com/mcp",
+      "oauth": {
+        "scopes": "hitapply:read hitapply:write"
+      }
     }
   }
 }

@@ -40,7 +40,8 @@ answer what it can't, and submit **only after the user says yes in chat**.
 - If `documents.resume` is not `available`, stop. Tell the user to generate the résumé in
   HitApply first.
 - If `apply_url` is null, stop and ask the user for the link.
-- Call `get_profile` once. You'll use it for any field the extension leaves open.
+- Load the profile once: `list_profiles`, take the `primary` one, then `get_profile(id)`, following
+  `next_cursor` until it's null. You'll use it for any field the extension leaves open.
 
 ## 2. Open the form
 - **Turn Auto on first.** Sites with a sign-in step (Workday) keep Auto pending through

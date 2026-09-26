@@ -6,10 +6,16 @@ description: Find jobs for the user with HitApply. Use when the user asks to fin
 # Find jobs
 
 ## 1. Search HitApply's job bank
-- Call `get_profile` once. Build the query from the profile's target roles and skills, and the
-  locations from its preferred locations, unless the user named their own.
-- Call `search_jobs(query, locations)`. Show at most 10 results as a short list: company — title,
-  location, posted date. Number them so the user can pick one.
+- Load the profile once: `list_profiles`, take the `primary` one, then `get_profile(id)`, following
+  `next_cursor` until it's null.
+- **Query:** the profile has no target role, so use the role the user asked for, or infer one from
+  the header and the most recent job titles (e.g. "backend engineer").
+- **Locations:** the profile has none either. If the user didn't name any, ask once: "Where, or
+  remote?"
+- Call `search_jobs(query, locations, limit=30)`. Results come newest first, unranked.
+- **Rank** them yourself against the profile: title and seniority fit first, then location and
+  remote. Show the top 10, numbered, each as company — title, location, and a one-line reason.
+  Say it's ranked on the title and location; the full match comes from evaluating a job.
 - If nothing fits, loosen the query once (fewer terms, no location) before saying so.
 
 ## 2. Offer specific companies
