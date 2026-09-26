@@ -6,7 +6,8 @@ description: Tailor the user's HitApply résumé and cover letter to a job. Use 
 # Tailor the résumé and cover letter
 
 You reword the documents HitApply generated for one application, with the user's approval. The
-server re-checks every change and rebuilds the PDF. You only reword: no new facts.
+server rebuilds the PDF and refuses changed numbers and some invented skills, but its check is
+partial: the no-new-facts rule is yours to keep.
 
 ## 1. Get the application
 - **Already in HitApply** (an application id, or `list_applications` with the company and title
@@ -15,24 +16,36 @@ server re-checks every change and rebuilds the PDF. You only reword: no new fact
   - `needs_description`: ask the user to paste the job description, then call again with it.
   - `forbidden`: the connection is read-only. Tell the user to run `/mcp` and reconnect HitApply
     with write access, then stop.
-- **Wait:** poll `get_application(application_id)` every ~30 s until `documents.resume` is
-  `available`. If it isn't after ~5 min, or its status is an error, stop and tell the user.
+- **Existing application with no résumé:** if `documents.resume` is `none` and its `status` isn't
+  `queued` or `processing`, nothing is generating. Say "Generate its documents in HitApply first"
+  and stop.
+- **Wait:** otherwise poll `get_application(application_id)` every ~30 s until `documents.resume`
+  is `available`. If it isn't after ~5 min, or its status is an error, stop and tell the user.
 
 ## 2. Know what to aim for
 - Use the evaluation from this chat (gaps in B, the customization plan in E).
-- If there isn't one, read the job (`get_application` includes the description) and the profile
-  the documents were built from (`get_profile(application.profile_id)`, following `next_cursor`),
-  and list the job's top requirements and the gaps first.
+- If there isn't one, read:
+  - the whole job description: `get_application(application_id)`, then call it again with
+    `cursor=description.next_cursor` until `description.complete` is true, joining the pages;
+  - the profile the documents were built from: `get_profile(application.profile_id)`, following
+    `next_cursor`. If `profile_id` is null, page through `list_profiles` for the `primary` one; if
+    there are no profiles, compare against the résumé itself.
+
+  Then list the job's top requirements and the gaps first.
 
 ## 3. The résumé
-- Call `get_document(application_id, "resume", representation="structured")`.
+- Call `get_document(application_id, "resume", representation="structured")`, following
+  `next_cursor` until it's null to collect every target.
+  - `not_found`: say "This résumé was made before the builder, or with a template the builder can't
+    edit. Regenerate it in HitApply to tailor it here," and stop.
+  - `content_changed` while paging: start the read over.
 - If `edit_mode` is `manual`, say "This résumé is edited as LaTeX, so edit it in the HitApply
   builder" and skip to the cover letter.
 - Propose **at most 8** replacements, each on one target from `targets`:
   `{target_id, field, before: <its current text, exactly>, after: <the rewording>}`.
   - Reword to use the job's language, lead with the most relevant work, and tighten.
   - **Keep every number exactly as it is.** Don't add a skill, tool, employer or result the
-    document doesn't already state. The server refuses both.
+    document doesn't already state. The server catches changed numbers, but only some new claims.
   - `items` fields (skill rows) can be reordered or reworded, not extended with new skills.
 - Show them as a numbered list: **before → after**, with a few words on why. Then ask:
   "Apply these changes?" The user may accept some, all, or edit them.

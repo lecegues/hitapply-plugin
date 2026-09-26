@@ -26,7 +26,7 @@ Talk normally, or use the commands. A typical run:
 |---|---|---|---|
 | Find | "Find me backend jobs in Toronto" | `/hitapply:find-jobs` | A ranked top 10 from HitApply's job bank, with a reason each. Offers to check specific companies' career pages too. |
 | Evaluate | "Evaluate #3" or paste a link | `/hitapply:evaluate-job` | A report: role, match and gaps, level, pay, résumé changes, interview prep, legitimacy, and a 1–5 score. Below 4 means probably skip. |
-| Tailor | "Tailor my résumé for #3" | `/hitapply:tailor` | Proposes rewordings of your résumé (then cover letter) aimed at the job, before → after. Applies only what you approve; HitApply re-checks them (no changed numbers, no invented skills) and rebuilds the PDF. |
+| Tailor | "Tailor my résumé for #3" | `/hitapply:tailor` | Proposes rewordings of your résumé (then cover letter) aimed at the job, before → after. Applies only what you approve. HitApply blocks changed numbers and some invented skills, then rebuilds the PDF. |
 | Apply | "Apply to #3" | `/hitapply:apply-to-job` | Queues the job, waits for the résumé, opens the form in Chrome and fills it with the extension. Stops before Submit and asks you. Marks it applied afterwards. |
 
 Also handy: "What have I applied to?"
