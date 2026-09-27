@@ -20,7 +20,9 @@ Call `import_resume(text)`. It parses the résumé and saves nothing.
   the text again or a shorter version.
 - `needs_setup`: HitApply has no AI key for this account. Say "Add your OpenRouter key in
   HitApply → Settings, then say continue," and wait. Don't retry before that.
-- `not_ready`: say "HitApply couldn't parse it right now," and offer to try again.
+- `not_ready`: pass the message on. If it says the AI provider is rate-limiting, suggest waiting a
+  minute or picking another model in HitApply → Settings, and don't retry until the user says so.
+  Otherwise say "HitApply couldn't parse it right now," and offer to try again.
 - `forbidden`: the connection is read-only. Tell the user to run `/mcp` and reconnect HitApply
   with write access, then stop.
 
