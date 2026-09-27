@@ -8,8 +8,8 @@ description: Find jobs for the user with HitApply. Use when the user asks to fin
 ## 1. Search HitApply's job bank
 - Load the profile once: page through `list_profiles` (follow `next_cursor`) until you find the
   `primary` one, then `get_profile(id)`, following `next_cursor` until it's null.
-  If `list_profiles` is empty, say "You don't have a saved profile yet. Create one in HitApply
-  (Profile page), then ask again." and stop.
+  If `list_profiles` is empty, say "You don't have a saved profile yet. Want to set one up from
+  your résumé?" On yes, use the onboard skill; otherwise stop.
 - **Query:** the profile has no target role, so use the role the user asked for, or infer one from
   the header and the most recent job titles (e.g. "backend engineer").
 - **Locations:** if the user didn't name any, use the location in the profile header, or failing

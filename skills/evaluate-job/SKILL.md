@@ -14,8 +14,8 @@ Adapted from the evaluation mode of career-ops by Santiago Fernández de Valderr
 - **The candidate:** page through `list_profiles` (follow `next_cursor`) until you find the `primary`
   one (or the one the user named), then `get_profile(id)`, following `next_cursor` until it's null so
   no experience is missed. Name that profile in the report.
-  If `list_profiles` is empty, say "You don't have a saved profile yet. Create one in HitApply
-  (Profile page), then ask again." and stop.
+  If `list_profiles` is empty, say "You don't have a saved profile yet. Want to set one up from
+  your résumé?" On yes, use the onboard skill; otherwise stop.
 - **HitApply's own score:** if the job is already an application, note its `match_score`.
 - Research is one pass: **at most 3 web searches** across blocks D and G together. If data is
   missing, say "unavailable". Never invent numbers.

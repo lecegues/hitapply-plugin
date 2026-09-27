@@ -5,7 +5,7 @@ Find jobs, see whether they're worth it, and apply, all from Claude, using your
 applications; Claude does the searching, judging and form-filling.
 
 ## What you need
-- A HitApply account with a saved profile (your résumé).
+- A HitApply account. No profile yet? The onboard step builds one from your résumé.
 - Claude Code (Cowork works the same way).
 - To apply: Claude in Chrome and the HitApply browser extension, both signed in.
 
@@ -16,7 +16,7 @@ applications; Claude does the searching, judging and form-filling.
 ```
 1. If the skills don't show up, run `/reload-plugins`.
 2. Run `/mcp`, pick **hitapply**, sign in to HitApply and approve. Allow both read and write:
-   write lets Claude queue a job (which generates its résumé and cover letter), apply the edits you
+   write lets Claude save your profile, queue a job (which generates its résumé and cover letter), apply the edits you
    approve, and mark it applied.
 
 ## Use
@@ -24,6 +24,7 @@ Talk normally, or use the commands. A typical run:
 
 | Step | Say | Command | What happens |
 |---|---|---|---|
+| Onboard | "Set up my profile" and attach your résumé | `/hitapply:onboard` | Reads your résumé, shows what it found, and saves it as a new HitApply profile once you approve. Then asks a few questions to fill gaps. |
 | Find | "Find me backend jobs in Toronto" | `/hitapply:find-jobs` | A ranked top 10 from HitApply's job bank, with a reason each. Offers to check specific companies' career pages too. |
 | Evaluate | "Evaluate #3" or paste a link | `/hitapply:evaluate-job` | A report: role, match and gaps, level, pay, résumé changes, interview prep, legitimacy, and a 1–5 score. Below 4 means probably skip. |
 | Tailor | "Tailor my résumé for #3" | `/hitapply:tailor` | Proposes rewordings of your résumé (then cover letter) aimed at the job, before → after. Applies only what you approve. HitApply blocks changed numbers and some invented skills, then rebuilds the PDF. |
@@ -38,7 +39,7 @@ Also handy: "What have I applied to?"
 
 ## Troubleshooting
 - **`forbidden`**: the connection is read-only. Run `/mcp`, reconnect hitapply and allow write.
-- **"You don't have a saved profile yet"**: create one on HitApply's Profile page.
+- **"You don't have a saved profile yet"**: say "set up my profile" and attach your résumé, or create one on HitApply's Profile page.
 - **HitApply tools missing or disconnected**: run `/mcp` and reconnect. Access lasts 30 days.
 
 ## Claude desktop / claude.ai
