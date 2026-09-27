@@ -14,6 +14,9 @@ partial: the no-new-facts rule is yours to keep.
   finds it): use it.
 - **Not yet:** find it with `search_jobs`, then `queue_job(job_id)` and tell the user it's queued.
   - `needs_description`: ask the user to paste the job description, then call again with it.
+  - Not in the job bank (a careers-page scan, a link the user gave): read the page and call
+    `add_job(apply_url, title, company, description, location)` with its text as written. If the
+    page has no description, ask the user for it.
   - `forbidden`: the connection is read-only. Tell the user to run `/mcp` and reconnect HitApply
     with write access, then stop.
 - **Existing application with no résumé:** if `documents.resume` is `none` and its `status` isn't

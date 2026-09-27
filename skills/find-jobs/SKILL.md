@@ -31,6 +31,9 @@ each one's public job list and keep only the roles that fit the profile:
 The slug is usually the company name in lower case. If all three return nothing, open the
 company's careers page to find its board. Try each board once; don't loop.
 
+Keep each role's link. These jobs aren't in HitApply yet: they're added (with `add_job`) only when
+the user picks one to tailor or apply to.
+
 ## 3. What they've applied to
 For "what have I applied to" or "what's in progress", call
 `list_applications(application_status="applied")` or with no filter, and summarise by status.
