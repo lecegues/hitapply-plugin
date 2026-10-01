@@ -47,10 +47,16 @@ Submit, and submit **only after the user says yes in chat**.
 - If `documents.resume` is not `available`, stop. Tell the user to generate the résumé in
   HitApply first.
 - If `apply_url` is null, stop and ask the user for the link.
-- Load the profile the documents were built from: `get_profile(profile_id)` using the
-  application's `profile_id`, following `next_cursor` until it's null. If `profile_id` is null, page
-  through `list_profiles` for the `primary` one instead. Load it **once**; it's your source for
-  every field.
+- Load the profile the documents were built from: `get_profile(profile_id, include_answers=true)`
+  using the application's `profile_id`, following `next_cursor` until it's null. If `profile_id` is
+  null, page through `list_profiles` for the `primary` one instead. Load it **once**: read `content`
+  page by page (pass `include_answers=true` and the cursor) until `next_cursor` is null, then parse the
+  joined text as JSON. Its `resume` and `answers` (saved application answers: address, work
+  authorization, sponsorship, EEO, relocation, salary, past answers) are your source for every
+  field. `answers.learned` holds answers the user gave on earlier forms; reuse one when it fits the
+  question.
+  - `forbidden` on `include_answers`: load it without, ask those questions in chat, and tell the
+    user once that reconnecting HitApply with the saved-answers permission avoids that.
 
 ## 2. Open the form
 - **Turn Auto on first.** Sites with a sign-in step (Workday) keep Auto pending through
@@ -70,11 +76,14 @@ Submit, and submit **only after the user says yes in chat**.
   Workday, `dock.md` says how it works with the dock).
 
 ## 3. Fill the form
-- **The HitApply dock shows** (bottom right; Workday, Greenhouse...): read `dock.md` in this
-  skill's folder and follow it.
+- **The HitApply dock shows** (bottom right; Workday, Greenhouse, Lever...): read `dock.md` in this
+  skill's folder and follow it. It's cheaper than filling by hand. If the dock path fails (see
+  `dock.md`), reload the form tab and switch to `form.md`.
 - **No dock** after the page has loaded: read `form.md` in this skill's folder and follow it.
 
 ## 4. Confirm, then submit
+- Put first in the summary, as "please confirm": anything sensitive you filled from `answers`
+  (work authorization, sponsorship, salary, EEO, legal).
 - **Dock path:** Auto also AI-answers dropdowns on its own, including work authorization, conflicts of
   interest and legal acknowledgements. **Check those values against `get_profile`, and
   put them first in the summary as "answered by AI, please confirm."**

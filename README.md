@@ -25,7 +25,7 @@ applications; Claude does the searching, judging and form-filling.
 ```
 codex plugin marketplace add lecegues/hitapply-plugin
 codex plugin add hitapply@hitapply
-codex mcp login hitapply --scopes hitapply:read,hitapply:write
+codex mcp login hitapply --scopes hitapply:read,hitapply:write,hitapply:answers
 ```
 
 ## Use
