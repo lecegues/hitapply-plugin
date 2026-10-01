@@ -37,6 +37,9 @@ the final Submit.
 Snapshot again only after something changes the page (a new page, a section that expands). Don't
 snapshot after every field.
 
+A sign-in or create-account page that appears along the way: follow `accounts.md`, then continue
+with the form where you left off.
+
 ## Stop and hand back
-A sign-in or create-account page, a CAPTCHA, an error you can't fix after one retry, or a
+A CAPTCHA, an error you can't fix after one retry, or a
 required field you have no answer for after asking.

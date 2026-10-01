@@ -102,4 +102,5 @@ Use this when `search_jobs` can't find the job (a company careers page, a link t
 - Submit without a yes in chat for this specific application.
 - Enter card numbers, government IDs or passwords. For job-site accounts, type only the secret
   names `JOB_EMAIL` / `JOB_PASSWORD` (see `accounts.md`).
+- Take a screenshot on a sign-in, account or password-reset page (it shows what snapshots hide).
 - Keep going after a stop condition. Hand back and say what's blocking.
