@@ -54,7 +54,11 @@ Switch to filling it yourself if any of these happens:
 - a dock error or "HitApply didn't respond";
 - "Application ready" on a step that isn't the last, and you can't fill what's left by hand.
 
-Then: reload the form tab (`browser_navigate` to its URL), and follow `form.md` from the page you're
-on. Keep answers already saved on the site (Workday keeps earlier steps); don't redo them. Tell the
+Then:
+1. **Turn Auto off first:** untick "Auto — all steps, stop before submit" in the dock (by ref) and
+   check in a snapshot that it's unchecked. Otherwise Auto starts again after the reload. Never use
+   "Hide HitApply on this site".
+2. Reload the form tab (`browser_navigate` to its URL), and follow `form.md` from the page you're
+   on. Keep answers already saved on the site (Workday keeps earlier steps); don't redo them. Tell the
 user in one line that the dock stalled and you're filling it yourself.
 
