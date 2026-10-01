@@ -17,7 +17,8 @@ the final Submit.
 ## Each page
 1. Take **one** snapshot of the page (`browser_snapshot`).
 2. Fill everything you can map from the profile in **one** call (`browser_fill_form`): name, email, phone, location, links (LinkedIn, GitHub, portfolio), work and
-   education history, and current company/title. Copy values exactly as the profile has them.
+   education history, current company/title, and from `answers`: address/location, links, work
+   authorization, sponsorship, relocation, how-you-heard and EEO. Copy values exactly as given.
 3. Upload the résumé, then the cover letter if there's a field for it, one at a time, using the
    absolute path of the downloaded file: click that field's upload control (Attach / Upload /
    Choose file) first, so its file chooser opens, then call `browser_file_upload` with that one path.
@@ -25,7 +26,7 @@ the final Submit.
 4. **Free-text questions** ("Why this company?"): draft 2–4 sentences from the profile and the job
    description, and note that you drafted them.
 5. **Ask the user in chat** for salary, visa or sponsorship, relocation, start date, legal or
-   background questions and EEO/demographics, unless the profile states the answer outright.
+   background questions and EEO/demographics only when neither the résumé nor `answers` states it.
    Ask all of a page's questions in one message.
 6. Leave optional fields you can't answer empty. Don't invent anything.
 7. Click **Next** / **Continue**, then repeat from 1. On the page with the final **Submit**, stop

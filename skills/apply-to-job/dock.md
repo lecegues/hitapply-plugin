@@ -39,11 +39,22 @@ Use when the HitApply dock shows on the form.
     - Click **"Let AI answer this"** first (at most once per field). It usually takes a few seconds.
       Don't pick an option yourself while the dock is answering, even if you know the answer.
     - Only if the field isn't filled within ~30 s, or an error toast appears, fill it yourself
-      (from `get_profile` or the job) and click **Resume**.
+      (from the résumé, `answers` or the job) and click **Resume**.
     - For short free-text questions ("Why this company?"), draft 2–4 sentences from the
       profile and the job description, and note that you drafted them.
     - For **salary, visa or sponsorship, relocation, start date, legal or background
-      questions, and EEO/demographics**, ask the user in chat unless the profile states the answer outright.
-- **Never clear or re-enter fields the dock already filled**, and don't redo the form by hand.
-  If Auto is stuck and the steps above don't unstick it, stop and tell the user which fields are left.
+      questions, and EEO/demographics**, use `answers` if it states the answer; otherwise ask the
+      user in chat.
+- **Never clear or re-enter fields the dock already filled.**
+
+## When the dock path fails
+Switch to filling it yourself if any of these happens:
+- a question card you can't clear (Let AI answer + your own answer + Resume didn't work);
+- no progress for ~3 minutes;
+- a dock error or "HitApply didn't respond";
+- "Application ready" on a step that isn't the last, and you can't fill what's left by hand.
+
+Then: reload the form tab (`browser_navigate` to its URL), and follow `form.md` from the page you're
+on. Keep answers already saved on the site (Workday keeps earlier steps); don't redo them. Tell the
+user in one line that the dock stalled and you're filling it yourself.
 
