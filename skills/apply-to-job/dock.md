@@ -19,9 +19,7 @@ Use when the HitApply dock shows on the form.
 
 ## Run Auto mode
 - The HitApply dock sits at the bottom right. If it's minimized, click it to open it.
-  It lives in a shadow root. If your browser tool's snapshot lists the dock's buttons (Playwright
-  MCP usually does), click them by ref; otherwise (`find`/`read_page` in Claude in Chrome can't see
-  it) click by coordinates from a screenshot. Don't click the page's own "Autofill my application" button (Greenhouse's).
+  It lives in an open shadow root, and the snapshot lists its buttons: click them by ref. Don't click the page's own "Autofill my application" button (Greenhouse's).
 - If the dock shows **"Already in HitApply"**, click **"Back to autofill"**.
 - **Multi-page forms (Workday):** Auto presses Save and Continue itself. Never click Next,
   Continue or Save and Continue yourself. Just wait for the dock to stop.

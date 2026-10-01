@@ -5,7 +5,7 @@ Use on any page that asks the user to sign in or create an account before applyi
 ## Is it set up?
 Job-site accounts need Playwright MCP and the user's secrets file, which holds one job-site email
 and password as `JOB_EMAIL` and `JOB_PASSWORD`. **You never see or ask for the values.** You type
-the literal **name** (`JOB_EMAIL`, `JOB_PASSWORD`) with `browser_type` / `browser_fill_form`;
+the literal **name** (`JOB_EMAIL`, `JOB_PASSWORD`) with `browser_type` or `browser_fill_form`;
 Playwright fills in the real value, and snapshots show it as `<secret>JOB_EMAIL</secret>`. A
 missing or empty secret is typed as its plain name, so check **both** before using either. Check
 on a blank page, **never in a job site's field**: a site's page can read and send whatever is
@@ -21,8 +21,7 @@ typed into it, including the real password.
    Both must be `true`.
 4. Close the probe tab and go back to the form's tab. Once per run is enough.
 
-If either is `false`, the probe page won't open, or you're using Claude in Chrome, it
-isn't set up. Ask the user to sign in (or create the account) in the form's tab and say done. Then
+If either is `false`, or the probe page won't open, it isn't set up. Ask the user to sign in (or create the account) in the form's tab and say done. Then
 continue. Even when it is set up, type `JOB_EMAIL` only into email fields and `JOB_PASSWORD` only
 into password fields.
 
