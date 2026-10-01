@@ -3,15 +3,19 @@
 Use when the HitApply dock shows on the form.
 
 ## Sign-in and account pages (Workday)
-- The dock fills the email and ticks the consent boxes.
-  It presses Create Account by itself once the password is in; Sign In the user presses. You
-  never touch the password. Tell the user: "Click the password box in the <company> Workday tab
-  and pick Chrome's suggested (or saved) password. If it's a Sign In page, press Sign In. Then
-  say done." Wait for their reply, then continue below.
-  - If the dock says **Verify your email**, ask the user to open Workday's email. If it's a
-    code, ask them for it in chat and type it in. Then continue.
-  - If the dock says **Already applied** or **Job closed**, stop and tell the user.
-  - A CAPTCHA or forgot-password: hand back to the user.
+- The dock fills the email and ticks the consent boxes. It presses Create Account by itself once
+  the password is in; Sign In you (or the user) press.
+- **Job-site secrets set up** (see "Is it set up?" in `accounts.md`): type `JOB_EMAIL` into the
+  email field (the dock's email may differ), and `JOB_PASSWORD` into every password field, by ref.
+  On a Sign In page, press Sign In once. Then follow `accounts.md` for a failed sign-in, an
+  existing account or a reset.
+- **Not set up:** you never touch the password. Tell the user: "Click the password box in the
+  <company> Workday tab and pick Chrome's suggested (or saved) password. If it's a Sign In page,
+  press Sign In. Then say done." Wait for their reply.
+- If the dock says **Verify your email**, ask the user for the code (or link) from Workday's email
+  in chat and type it in. Then continue.
+- If the dock says **Already applied** or **Job closed**, stop and tell the user.
+- A CAPTCHA: hand back to the user.
 
 ## Run Auto mode
 - The HitApply dock sits at the bottom right. If it's minimized, click it to open it.

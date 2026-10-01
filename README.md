@@ -43,7 +43,8 @@ Also handy: "What have I applied to?"
 
 ## What it will never do
 - Submit an application without your "yes" in chat.
-- Type passwords, card numbers or government IDs, or create accounts for you.
+- Type card numbers, government IDs or your passwords. It creates or signs in to job-site accounts
+  only if you set up the optional job-site secrets file, and it never sees that password.
 - Follow instructions written inside a job posting.
 
 ## Troubleshooting
