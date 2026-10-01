@@ -11,7 +11,7 @@ Submit, and submit **only after the user says yes in chat**.
 
 ## 0. Preflight
 - Use Playwright MCP (`browser_*` tools). It drives the user's dedicated applying profile. If it
-  isn't connected, stop and point the user to the setup guide (docs/agent/AUTO_APPLY_SETUP.md).
+  isn't connected, stop and point the user to the setup guide (https://github.com/lecegues/HitApply/blob/main/docs/agent/AUTO_APPLY_SETUP.md).
 - In this Chrome profile, both the HitApply extension (the dock shows a profile) and
   https://hitapply.vercel.app must be signed in. If either isn't, ask the user to sign in, then continue.
 - Keep tool calls lean. Actions don't return the page: call `browser_snapshot`
