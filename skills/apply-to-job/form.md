@@ -19,9 +19,12 @@ the final Submit.
 2. Fill everything you can map from the profile in **one** call (`browser_fill_form` /
    `form_input`): name, email, phone, location, links (LinkedIn, GitHub, portfolio), work and
    education history, and current company/title. Copy values exactly as the profile has them.
-3. Upload the résumé (and cover letter, if there's a field for it) with `browser_file_upload` /
-   `file_upload`, using the absolute path of the downloaded file. If a site parses the résumé and
-   overwrites fields, re-check them against the profile.
+3. Upload the résumé, then the cover letter if there's a field for it, one at a time, using the
+   absolute path of the downloaded file:
+   - Playwright MCP: click that field's upload control (Attach / Upload / Choose file) first, so
+     its file chooser opens, then call `browser_file_upload` with that one path.
+   - Claude in Chrome: `file_upload` with the field's ref and the path.
+   If a site parses the résumé and overwrites fields, re-check them against the profile.
 4. **Free-text questions** ("Why this company?"): draft 2–4 sentences from the profile and the job
    description, and note that you drafted them.
 5. **Ask the user in chat** for salary, visa or sponsorship, relocation, start date, legal or
