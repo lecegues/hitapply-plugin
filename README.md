@@ -6,8 +6,10 @@ applications; Claude does the searching, judging and form-filling.
 
 ## What you need
 - A HitApply account. No profile yet? The onboard step builds one from your résumé.
-- Claude Code (Cowork works the same way).
-- To apply: Claude in Chrome and the HitApply browser extension, both signed in.
+- Claude Code (Cowork works the same way) or Codex.
+- To apply: a dedicated Chrome/Edge profile with the HitApply extension signed in, plus either the
+  Playwright MCP Bridge extension (any site) or Claude in Chrome. Setup:
+  [AUTO_APPLY_SETUP.md](https://github.com/lecegues/HitApply/blob/main/docs/agent/AUTO_APPLY_SETUP.md).
 
 ## Install
 ```
@@ -19,6 +21,13 @@ applications; Claude does the searching, judging and form-filling.
    write lets Claude save your profile, queue a job (which generates its résumé and cover letter), apply the edits you
    approve, and mark it applied.
 
+**Codex:**
+```
+codex plugin marketplace add lecegues/hitapply-plugin
+codex plugin add hitapply@hitapply
+codex mcp login hitapply --scopes hitapply:read,hitapply:write
+```
+
 ## Use
 Talk normally, or use the commands. A typical run:
 
@@ -28,7 +37,7 @@ Talk normally, or use the commands. A typical run:
 | Find | "Find me backend jobs in Toronto" | `/hitapply:find-jobs` | A ranked top 10 from HitApply's job bank, with a reason each. Offers to check specific companies' career pages too. |
 | Evaluate | "Evaluate #3" or paste a link | `/hitapply:evaluate-job` | A report: role, match and gaps, level, pay, résumé changes, interview prep, legitimacy, and a 1–5 score. Below 4 means probably skip. |
 | Tailor | "Tailor my résumé for #3" | `/hitapply:tailor` | Proposes rewordings of your résumé (then cover letter) aimed at the job, before → after. Applies only what you approve. HitApply blocks changed numbers and some invented skills, then rebuilds the PDF. |
-| Apply | "Apply to #3" | `/hitapply:apply-to-job` | Queues the job, waits for the résumé, opens the form in Chrome and fills it with the extension. Stops before Submit and asks you. Marks it applied afterwards. |
+| Apply | "Apply to #3" | `/hitapply:apply-to-job` | Queues the job, waits for the résumé, opens the form in your applying profile and fills it (with the extension's dock where it appears, itself elsewhere). Stops before Submit and asks you. Marks it applied afterwards. |
 
 Also handy: "What have I applied to?"
 
