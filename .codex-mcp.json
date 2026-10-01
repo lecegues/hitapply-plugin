@@ -12,7 +12,11 @@
       "args": [
         "-y",
         "@playwright/mcp@0.0.83",
-        "--extension"
+        "--extension",
+        "--snapshot-mode",
+        "none",
+        "--caps",
+        "vision"
       ],
       "env_vars": [
         "PLAYWRIGHT_MCP_EXTENSION_TOKEN",

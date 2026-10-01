@@ -31,7 +31,9 @@ Use when the HitApply dock shows on the form.
   says "No résumé loaded", click **CHOOSE**. Then pick this application. Don't start Auto until
   the line matches, or the wrong documents get attached.
 - Tick **"Auto — all steps, stop before submit"**, then click **"Auto-fill every step"**.
-- Wait. Take screenshots only when you need them, and let the dock work. It stops in one of two states:
+- Wait with `browser_wait_for` for the text "Application ready" (30 s per call; repeat up to ~10
+  times). If it hasn't appeared, take one snapshot to check for a question card. It stops in one of
+  two states:
   - **"Application ready"**: go to step 4 of SKILL.md.
   - **A question card** ("Let AI answer this" / "Skip this"): the dock couldn't fill a field.
     - Click **"Let AI answer this"** first (at most once per field). It usually takes a few seconds.

@@ -14,7 +14,13 @@ Submit, and submit **only after the user says yes in chat**.
   otherwise Claude in Chrome. Below, "snapshot", "fill" and "upload" mean that tool's equivalent.
 - In this Chrome profile, both the HitApply extension (the dock shows a profile) and
   https://hitapply.vercel.app must be signed in. If either isn't, ask the user to sign in, then continue.
-- Keep tool calls lean: snapshot or screenshot only when something changed, and wait ~10 s between checks.
+- Keep tool calls lean. With Playwright MCP, actions don't return the page: call `browser_snapshot`
+  once per new page or after something changes it. Never take a screenshot just to check progress;
+  wait with `browser_wait_for` (text to appear, up to 30 s per call) instead of polling.
+- If a click by ref times out with "not stable" (an animating button), don't retry it. Take one
+  screenshot (never on a sign-in page) and click once by coordinates with `browser_mouse_click_xy`.
+- If a site doesn't register text you filled (the field stays empty or "required"), retype it with
+  `browser_type` and `slowly: true`.
 - Claude in Chrome can't bring a tab to the front. If a page doesn't respond, ask the user to click that tab.
 
 ## 1. Find the job and get it ready
