@@ -7,13 +7,18 @@ Job-site accounts need Playwright MCP and the user's secrets file, which holds o
 and password as `JOB_EMAIL` and `JOB_PASSWORD`. **You never see or ask for the values.** You type
 the literal **name** (`JOB_EMAIL`, `JOB_PASSWORD`) with `browser_type` / `browser_fill_form`;
 Playwright fills in the real value, and snapshots show it as `<secret>JOB_EMAIL</secret>`. A
-missing or empty secret is typed as its plain name, so check **both** before using either:
-1. Type `JOB_PASSWORD` into the **email** field and snapshot. It must show
-   `<secret>JOB_PASSWORD</secret>`.
-2. Clear the field, type `JOB_EMAIL`, and snapshot. It must show `<secret>JOB_EMAIL</secret>`.
+missing or empty secret is typed as its plain name, so check **both** before using either. Check
+on a blank page, **never in a job site's field**: a site's page can read and send whatever is
+typed into it, including the real password.
+1. Open a **new tab** at `data:text/html,<input aria-label="probe">` (no scripts, no network).
+2. Type `JOB_EMAIL` into the probe and snapshot. It must show `<secret>JOB_EMAIL</secret>`.
+3. Clear it, type `JOB_PASSWORD`, and snapshot. It must show `<secret>JOB_PASSWORD</secret>`.
+4. Close the probe tab and go back to the form's tab. Once per run is enough.
 
-If either shows the plain name, or you're using Claude in Chrome, it isn't set up. Clear the field,
-then ask the user to sign in (or create the account) in that tab and say done. Then continue.
+If either shows the plain name, the probe page won't open, or you're using Claude in Chrome, it
+isn't set up. Ask the user to sign in (or create the account) in the form's tab and say done. Then
+continue. Even when it is set up, type `JOB_EMAIL` only into email fields and `JOB_PASSWORD` only
+into password fields.
 
 ## Screenshots
 Snapshots hide the secrets; **screenshots don't.** On sign-in, account and password-reset pages,
