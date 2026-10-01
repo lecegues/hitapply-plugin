@@ -10,7 +10,9 @@ Playwright fills in the real value, and snapshots show it as `<secret>JOB_EMAIL<
 missing or empty secret is typed as its plain name, so check **both** before using either. Check
 on a blank page, **never in a job site's field**: a site's page can read and send whatever is
 typed into it, including the real password.
-1. Open a **new tab** at `data:text/html,<input aria-label="probe">` (no scripts, no network).
+1. Open a **new blank tab** (`about:blank`; Chrome blocks `data:` URLs here), and add a field with
+   `browser_evaluate`: `() => { document.body.innerHTML = '<input aria-label="probe">'; }`.
+   It has no site scripts and no network.
 2. Type `JOB_EMAIL` into the probe and snapshot. It must show `<secret>JOB_EMAIL</secret>`.
 3. Clear it, type `JOB_PASSWORD`, and snapshot. It must show `<secret>JOB_PASSWORD</secret>`.
 4. Close the probe tab and go back to the form's tab. Once per run is enough.
