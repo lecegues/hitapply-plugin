@@ -8,5 +8,5 @@
   },
   "repository": "https://github.com/lecegues/hitapply-plugin",
   "skills": "./skills/",
-  "mcpServers": "./.mcp.json"
+  "mcpServers": "./.codex-mcp.json"
 }

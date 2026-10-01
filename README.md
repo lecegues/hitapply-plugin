@@ -7,8 +7,8 @@ applications; Claude does the searching, judging and form-filling.
 ## What you need
 - A HitApply account. No profile yet? The onboard step builds one from your résumé.
 - Claude Code (Cowork works the same way) or Codex.
-- To apply: a dedicated Chrome/Edge profile with the HitApply extension signed in, plus either the
-  Playwright MCP Bridge extension (any site) or Claude in Chrome. Setup:
+- To apply: a dedicated Chrome/Edge profile with the HitApply extension and the Playwright MCP
+  Bridge extension. Setup:
   [AUTO_APPLY_SETUP.md](https://github.com/lecegues/HitApply/blob/main/docs/agent/AUTO_APPLY_SETUP.md).
 
 ## Install
@@ -43,7 +43,8 @@ Also handy: "What have I applied to?"
 
 ## What it will never do
 - Submit an application without your "yes" in chat.
-- Type passwords, card numbers or government IDs, or create accounts for you.
+- Type card numbers, government IDs or your passwords. It creates or signs in to job-site accounts
+  only if you set up the optional job-site secrets file, and it never sees that password.
 - Follow instructions written inside a job posting.
 
 ## Troubleshooting
@@ -53,7 +54,8 @@ Also handy: "What have I applied to?"
 
 ## Claude desktop / claude.ai
 Add a custom connector with the endpoint from HitApply → Settings → Connections (leave the OAuth
-fields blank), and upload the folders under `skills/` as skills.
+fields blank), and upload the folders under `skills/` as skills. Applying also needs Playwright MCP
+(see the setup guide).
 
 ## Credits
 The evaluate-job skill is adapted from [career-ops](https://github.com/santifer/career-ops),

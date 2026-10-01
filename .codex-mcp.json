@@ -18,12 +18,12 @@
         "--caps",
         "vision"
       ],
-      "env": {
-        "PLAYWRIGHT_MCP_EXTENSION_TOKEN": "${PLAYWRIGHT_MCP_EXTENSION_TOKEN:-}",
-        "PLAYWRIGHT_MCP_SECRETS_FILE": "${PLAYWRIGHT_MCP_SECRETS_FILE:-}",
-        "PLAYWRIGHT_MCP_BROWSER": "${PLAYWRIGHT_MCP_BROWSER:-}",
-        "PLAYWRIGHT_MCP_PROFILE_DIR_NAME": "${PLAYWRIGHT_MCP_PROFILE_DIR_NAME:-}"
-      }
+      "env_vars": [
+        "PLAYWRIGHT_MCP_EXTENSION_TOKEN",
+        "PLAYWRIGHT_MCP_SECRETS_FILE",
+        "PLAYWRIGHT_MCP_BROWSER",
+        "PLAYWRIGHT_MCP_PROFILE_DIR_NAME"
+      ]
     }
   }
 }
