@@ -32,7 +32,9 @@ Use when the HitApply dock shows on the form.
 - Wait with `browser_wait_for` for the text "Application ready" (30 s per call; repeat up to ~10
   times). If it hasn't appeared, take one snapshot to check for a question card. It stops in one of
   two states:
-  - **"Application ready"**: go to step 4 of SKILL.md.
+  - **"Application ready"**: check you are really on the last step (Review, or a page with the
+    final Submit). If not (Auto can stop early), tell the user which step and which required
+    fields are empty, then follow their answer. Otherwise go to step 4 of SKILL.md.
   - **A question card** ("Let AI answer this" / "Skip this"): the dock couldn't fill a field.
     - Click **"Let AI answer this"** first (at most once per field). It usually takes a few seconds.
       Don't pick an option yourself while the dock is answering, even if you know the answer.
