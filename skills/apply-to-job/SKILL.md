@@ -27,7 +27,7 @@ Submit, and submit **only after the user says yes in chat**.
 - **Given an application id:** skip to "Check the application".
 - **Check whether it's already in HitApply before queueing anything:**
   - Given a **link**: call `list_applications(url=link)`. If nothing matches, read the page's
-    company and title (`get_page_text`) and call `list_applications` with those.
+    company and title (`browser_snapshot` / `get_page_text`) and call `list_applications` with those.
   - Given a **job name**: call `list_applications` with that company and title.
   - **Found:** use that id. If its `application_status` is `applied`, tell the user it's already
     applied and stop, unless they say to go ahead anyway. If `documents.resume` is `available`, skip
@@ -94,7 +94,7 @@ Submit, and submit **only after the user says yes in chat**.
 
 ## Job not in HitApply yet
 Use this when `search_jobs` can't find the job (a company careers page, a link the user gave).
-1. Read the job page (`get_page_text`, or fetch it) for its title, company, location and full
+1. Read the job page (`browser_snapshot` / `get_page_text`, or fetch it) for its title, company, location and full
    description. Copy them as written. If the page has no description, ask the user for it.
 2. Call `add_job(apply_url, title, company, description, location)` without asking, and tell the
    user what you added. This starts document generation. Adding the same link again returns the

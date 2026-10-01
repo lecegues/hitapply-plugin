@@ -10,14 +10,18 @@ Playwright fills in the real value, and snapshots show it as `<secret>JOB_EMAIL<
 missing or empty secret is typed as its plain name, so check **both** before using either. Check
 on a blank page, **never in a job site's field**: a site's page can read and send whatever is
 typed into it, including the real password.
-1. Open a **new blank tab** (`about:blank`; Chrome blocks `data:` URLs here), and add a field with
-   `browser_evaluate`: `() => { document.body.innerHTML = '<input aria-label="probe">'; }`.
+1. Open a **new blank tab** (`about:blank`; Chrome blocks `data:` URLs here), and add two fields
+   with `browser_evaluate`:
+   `() => { document.body.innerHTML = '<input aria-label="probe-a"><input aria-label="probe-b">'; }`.
    It has no site scripts and no network.
-2. Type `JOB_EMAIL` into the probe and snapshot. It must show `<secret>JOB_EMAIL</secret>`.
-3. Clear it, type `JOB_PASSWORD`, and snapshot. It must show `<secret>JOB_PASSWORD</secret>`.
+2. Take one snapshot for the refs, then type `JOB_EMAIL` into probe-a and `JOB_PASSWORD` into probe-b.
+3. Check with one `browser_evaluate`, which only answers yes/no and clears the fields. Don't
+   snapshot the probe after typing (you never need to read a secret back):
+   `() => { const [a, b] = document.querySelectorAll('input'); const r = { email: a.value !== '' && a.value !== 'JOB_EMAIL', password: b.value !== '' && b.value !== 'JOB_PASSWORD' }; a.value = b.value = ''; return r; }`
+   Both must be `true`.
 4. Close the probe tab and go back to the form's tab. Once per run is enough.
 
-If either shows the plain name, the probe page won't open, or you're using Claude in Chrome, it
+If either is `false`, the probe page won't open, or you're using Claude in Chrome, it
 isn't set up. Ask the user to sign in (or create the account) in the form's tab and say done. Then
 continue. Even when it is set up, type `JOB_EMAIL` only into email fields and `JOB_PASSWORD` only
 into password fields.
