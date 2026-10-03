@@ -7,7 +7,8 @@ applications; Claude does the searching, judging and form-filling.
 ## What you need
 - A HitApply account. No profile yet? The onboard step builds one from your résumé.
 - Claude Code (Cowork works the same way) or Codex.
-- To apply: a dedicated Chrome/Edge profile with the HitApply extension and the Playwright MCP
+- To apply: [BrowserOS neo](https://www.browseros.com/) with the HitApply extension (simplest,
+  beta), or a dedicated Chrome/Edge profile with the HitApply extension and the Playwright MCP
   Bridge extension. Setup:
   [AUTO_APPLY_SETUP.md](https://github.com/lecegues/HitApply/blob/main/docs/agent/AUTO_APPLY_SETUP.md).
 

@@ -1,6 +1,6 @@
 ---
 name: apply-to-job
-description: Apply to a job through HitApply in the user's browser. Use when the user says "apply to [job] in HitApply", "Apply to HitApply application [id]", or asks to apply to a job they saw in HitApply or its Discord digest. Needs the HitApply MCP (with write access) and Playwright MCP connected to a Chrome profile with the HitApply extension signed in.
+description: Apply to a job through HitApply in the user's browser. Use when the user says "apply to [job] in HitApply", "Apply to HitApply application [id]", or asks to apply to a job they saw in HitApply or its Discord digest. Needs the HitApply MCP (with write access) and a browser with the HitApply extension signed in, driven by BrowserOS neo or Playwright MCP.
 ---
 
 # Apply to a HitApply application
@@ -10,9 +10,11 @@ fill the form yourself. Either way you attach the generated résumé and cover l
 Submit, and submit **only after the user says yes in chat**.
 
 ## 0. Preflight
-- Use Playwright MCP (`browser_*` tools). It drives the user's dedicated applying profile. If it
-  isn't connected, stop and point the user to the setup guide (https://github.com/lecegues/HitApply/blob/main/docs/agent/AUTO_APPLY_SETUP.md).
-- In this Chrome profile, both the HitApply extension (the dock shows a profile) and
+- **Pick the browser.** If the `browseros-neo` tools are connected, use BrowserOS neo: read
+  `browseros.md` in this skill's folder now and use it for every browser step below. Otherwise use
+  Playwright MCP (`browser_*` tools), which drives the user's dedicated applying profile. If
+  neither is connected, stop and point the user to the setup guide (https://github.com/lecegues/HitApply/blob/main/docs/agent/AUTO_APPLY_SETUP.md).
+- In that browser, both the HitApply extension (the dock shows a profile) and
   https://hitapply.vercel.app must be signed in. If either isn't, ask the user to sign in, then continue.
 - Keep tool calls lean. Actions don't return the page: call `browser_snapshot`
   once per new page or after something changes it. Never take a screenshot just to check progress;
