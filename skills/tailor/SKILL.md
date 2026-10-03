@@ -22,17 +22,17 @@ partial: the no-new-facts rule is yours to keep.
 - **Existing application with no résumé:** if `documents.resume` is `none` and its `status` isn't
   `queued` or `processing`, nothing is generating. Say "Generate its documents in HitApply first"
   and stop.
-- **Wait:** otherwise poll `get_application(application_id)` every ~30 s until `documents.resume`
-  is `available`. If it isn't after ~5 min, or its status is an error, stop and tell the user.
+- **Wait:** otherwise poll `get_application(application_id, include_description=false)` every
+  ~30 s until `documents.resume` is `available`. If it isn't after ~5 min, or its status is an error, stop and tell the user.
 
 ## 2. Know what to aim for
 - Use the evaluation from this chat (gaps in B, the customization plan in E).
 - If there isn't one, read:
   - the whole job description: `get_application(application_id)`, then call it again with
     `cursor=description.next_cursor` until `description.complete` is true, joining the pages;
-  - the profile the documents were built from: `get_profile(application.profile_id)`, following
-    `next_cursor`. If `profile_id` is null, page through `list_profiles` for the `primary` one; if
-    there are no profiles, compare against the résumé itself.
+  - the profile the documents were built from: `get_profile(application.profile_id)`, or
+    `get_profile()` (the primary) if the application has no `profile_id`, following `next_cursor`.
+    On `not_found`, compare against the résumé itself.
 
   Then list the job's top requirements and the gaps first.
 
