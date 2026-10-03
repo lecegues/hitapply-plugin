@@ -11,10 +11,10 @@ Adapted from the evaluation mode of career-ops by Santiago Fernández de Valderr
 - **The job:** from `get_job(origin, job_id)` (a find-jobs result), `get_application(id)` (already
   in HitApply), or the link or text the user gave. For a link, read the page. If it's closed, 404s
   or redirects to a generic careers page, say so and stop.
-- **The candidate:** page through `list_profiles` (follow `next_cursor`) until you find the `primary`
-  one (or the one the user named), then `get_profile(id)`, following `next_cursor` until it's null so
-  no experience is missed. Name that profile in the report.
-  If `list_profiles` is empty, say "You don't have a saved profile yet. Want to set one up from
+- **The candidate:** `get_profile()` with no id loads the primary profile. Only if the user named
+  another one, find its id in `list_profiles` and call `get_profile(id)`. Follow `next_cursor` until
+  it's null so no experience is missed. Name that profile in the report.
+  If `get_profile()` returns `not_found`, say "You don't have a saved profile yet. Want to set one up from
   your résumé?" On yes, use the onboard skill; otherwise stop.
 - **HitApply's own score:** if the job is already an application, note its `match_score`.
 - Research is one pass: **at most 3 web searches** across blocks D and G together. If data is

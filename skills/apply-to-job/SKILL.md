@@ -39,17 +39,18 @@ Submit, and submit **only after the user says yes in chat**.
     `queue_job(job_id, description)` with what they pasted.
   - `forbidden`: the connection is read-only. Tell the user to run `/mcp` and reconnect
     HitApply with write access, then stop.
-- **Wait:** poll `get_application(application_id)` every ~30 s until `documents.resume` is
-  `available`. If it isn't ready after ~5 min, or its status is an error, stop and tell the user.
+- **Wait:** poll `get_application(application_id, include_description=false)` every ~30 s until
+  `documents.resume` is `available`. If it isn't ready after ~5 min, or its status is an error, stop and tell the user.
 
 **Check the application**
-- Call `get_application(application_id)`.
+- Use the last poll's result if you just waited; otherwise call
+  `get_application(application_id, include_description=false)`. The form needs no job description.
 - If `documents.resume` is not `available`, stop. Tell the user to generate the résumé in
   HitApply first.
-- If `apply_url` is null, stop and ask the user for the link.
+- If `apply_url` is missing, stop and ask the user for the link.
 - Load the profile the documents were built from: `get_profile(profile_id, include_answers=true)`
-  using the application's `profile_id`, following `next_cursor` until it's null. If `profile_id` is
-  null, page through `list_profiles` for the `primary` one instead. Load it **once**: read `content`
+  using the application's `profile_id`, or `get_profile(include_answers=true)` (the primary) if it
+  has none, following `next_cursor` until it's null. Load it **once**: read `content`
   page by page (pass `include_answers=true` and the cursor) until `next_cursor` is null, then parse the
   joined text as JSON. Its `resume` and `answers` (saved application answers: address, work
   authorization, sponsorship, EEO, relocation, salary, past answers) are your source for every
