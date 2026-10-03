@@ -44,7 +44,10 @@ Submit, and submit **only after the user says yes in chat**.
 
 **Check the application**
 - Use the last poll's result if you just waited; otherwise call
-  `get_application(application_id, include_description=false)`. The form needs no job description.
+  `get_application(application_id, include_description=false)`.
+- The first time a free-text question needs it, read the job description once:
+  `get_application(application_id)`, then call it again with `cursor=description.next_cursor`
+  until `description.complete` is true, joining the pages. Reuse it for later questions.
 - If `documents.resume` is not `available`, stop. Tell the user to generate the résumé in
   HitApply first.
 - If `apply_url` is missing, stop and ask the user for the link.
