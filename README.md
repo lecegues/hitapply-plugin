@@ -1,7 +1,7 @@
 # HitApply for Claude
 
 Find jobs, see whether they're worth it, and apply, all from Claude, using your
-[HitApply](https://hitapply.dev) account. HitApply holds your profile, résumés and
+[HitApply](https://hitapply.app) account. HitApply holds your profile, résumés and
 applications; Claude does the searching, judging and form-filling.
 
 ## What you need

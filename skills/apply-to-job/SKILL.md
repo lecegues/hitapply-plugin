@@ -13,7 +13,7 @@ Submit, and submit **only after the user says yes in chat**.
 - Use Playwright MCP (`browser_*` tools). It drives the user's dedicated applying profile. If it
   isn't connected, stop and point the user to the setup guide (https://github.com/lecegues/HitApply/blob/main/docs/agent/AUTO_APPLY_SETUP.md).
 - In this Chrome profile, both the HitApply extension (the dock shows a profile) and
-  https://hitapply.dev must be signed in. If either isn't, ask the user to sign in, then continue.
+  https://hitapply.app must be signed in. If either isn't, ask the user to sign in, then continue.
 - Keep tool calls lean. Actions don't return the page: call `browser_snapshot`
   once per new page or after something changes it. Never take a screenshot just to check progress;
   wait with `browser_wait_for` (text to appear, up to 30 s per call) instead of polling.
@@ -66,7 +66,7 @@ Submit, and submit **only after the user says yes in chat**.
 - **Turn Auto on first.** Sites with a sign-in step (Workday) keep Auto pending through
   sign-in and fill the form by themselves afterwards, but only if Auto was already on. If the
   dock shows an "Auto: fill every step once I'm in" box, tick it.
-- Navigate to `https://hitapply.dev/applications/<application_id>/edit`.
+- Navigate to `https://hitapply.app/applications/<application_id>/edit`.
 - Click **Apply** by ref from the snapshot and click the **link** named "Apply" (external-link
   icon, top right). Never click by coordinates here, and never click "Download" or "Copy agent prompt".
   This loads the application into the extension and opens the form in a new tab.
