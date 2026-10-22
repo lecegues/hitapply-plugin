@@ -4,6 +4,14 @@ Find jobs, see whether they're worth it, and apply, all from Claude, using your
 [HitApply](https://hitapply.app) account. HitApply holds your profile, résumés and
 applications; Claude does the searching, judging and form-filling.
 
+**About this repo:** [HitApply](https://hitapply.app) is a hosted job-search app that finds jobs
+and writes a tailored résumé and cover letter for each one. You can use it on the web, with its
+browser extension, or from AI assistants such as ChatGPT, Claude, Gemini and Meta Muse. This repo
+is only the plugin that connects Claude Code, Cowork and Codex to your HitApply account: the
+connection settings plus a few skills. The HitApply service itself isn't here.
+Full guide: [Claude Code and Codex](https://hitapply.app/help/assistants/claude-code) in the
+[HitApply Help Center](https://hitapply.app/help).
+
 ## What you need
 - A HitApply account. No profile yet? The onboard step builds one from your résumé.
 - Claude Code (Cowork works the same way) or Codex.
