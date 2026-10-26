@@ -44,7 +44,10 @@ metadata block (give it the new `name`).
 - Give the user `open_url` to see the full preview in HitApply.
 
 ## 5. Use it
-- Offer to generate with it: `queue_job(job_id, template=<name>)` for a job, or for an existing
-  application have the user regenerate from HitApply.
+- **Résumé:** offer to generate with it: `queue_job(job_id, template=<name>)` for a job, or for an
+  existing application have the user regenerate from HitApply.
+- **Cover letter:** `queue_job`'s `template` picks résumé templates only. New cover letters use the
+  user's primary cover template, so ask before saving whether it should be the one used, and pass
+  `make_primary=true` if so (later: save it again with `replace=true, make_primary=true`).
 - To write the résumé content yourself with the new template, use the tailor skill's
   `get_materials` → `compose_resume` flow.
