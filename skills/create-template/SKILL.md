@@ -30,18 +30,24 @@ metadata block (give it the new `name`).
 ## 3. Check and look
 - Call `save_template(kind, source=...)`. Nothing is saved yet. You get `pages`, any `warnings`,
   and an image of page 1 filled with a short sample of the user's own profile.
-- **Look at the image** and compare it to what the user asked for. Fix and check again until it
-  matches. Say briefly what you changed.
+- **If an image came with the result, look at it** and compare it to what the user asked for. Fix
+  and check again until it matches. Say briefly what you changed.
+- **If no image came** (some apps drop it), say you can't see the result. Never describe how it
+  looks. Go to step 4 so the user can see it.
+- Don't paste the `.tex` into the chat unless the user asks for it.
 - `invalid_template`: the message says what is wrong. Fix exactly that, then check again.
 - `pages` over 1: the design is too tall. Tighten the spacing or the font size.
 - `busy`: wait a few seconds and retry. `daily_cap_reached`: stop and tell the user.
 
-## 4. Save once the user approves
-- Show the user the result and ask before saving. Then call
-  `save_template(kind, source=..., name=..., save=true)`.
+## 4. Save it so the user can see it
+- Call `save_template(kind, source=..., name=..., save=true)` and give the user `open_url`: the
+  full preview in HitApply. A saved template isn't used until they pick it for a job or make it
+  primary, **except** when they have no primary template yet (the first one becomes primary) or
+  you replace their primary. Then their next documents use it, so tell them before saving.
 - `name_taken`: ask whether to replace that template (`replace=true`) or use another name.
+- **For changes**, edit and save again with the same name and `replace=true`. It's the same
+  template, so the same link shows the new version.
 - Only pass `make_primary=true` when the user wants HitApply to use it by default.
-- Give the user `open_url` to see the full preview in HitApply.
 
 ## 5. Use it
 - **Résumé:** offer to generate with it: `queue_job(job_id, template=<name>)` for a job, or for an
