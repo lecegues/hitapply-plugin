@@ -41,8 +41,9 @@ metadata block (give it the new `name`).
 
 ## 4. Save it so the user can see it
 - Call `save_template(kind, source=..., name=..., save=true)` and give the user `open_url`: the
-  full preview in HitApply. Saving is safe: the template isn't used until they pick it for a job
-  or make it primary.
+  full preview in HitApply. A saved template isn't used until they pick it for a job or make it
+  primary, **except** when they have no primary template yet (the first one becomes primary) or
+  you replace their primary. Then their next documents use it, so tell them before saving.
 - `name_taken`: ask whether to replace that template (`replace=true`) or use another name.
 - **For changes**, edit and save again with the same name and `replace=true`. It's the same
   template, so the same link shows the new version.
